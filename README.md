@@ -29,10 +29,10 @@ Paste this to Claude Code, Codex, Cursor or any agent that can run commands:
 
 ```
 Install the Flow MCP Bridge from https://github.com/devmuhnnad/flow-mcp
-Clone it somewhere permanent, then read AGENTS.md in the repo and follow it.
+Clone it somewhere permanent, then read INSTALL-AGENT.md in the repo and follow it.
 ```
 
-`AGENTS.md` tells the agent what to run, which MCP client to ask about, and —
+`INSTALL-AGENT.md` tells the agent what to run, which MCP client to ask about, and —
 importantly — that loading the extension is the one step it must hand back to
 you rather than attempt or claim to have done.
 
