@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Flow MCP Bridge</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="topbar">
+    <img class="brand-mark" src="icons/icon48.png" alt="" width="28" height="28" />
+    <div class="brand-text">
+      <h1>Flow MCP Bridge</h1>
+      <p id="version">v—</p>
+    </div>
+    <span id="pill" class="pill pill--idle">
+      <span class="pill-dot"></span><span id="pill-text">Checking…</span>
+    </span>
+  </header>
+
+  <section id="banner" class="banner" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="banner-icon">
+      <path d="M12 3 2 20h20L12 3Zm0 5 6.2 10.5H5.8L12 8Zm-.9 3.6h1.8v4h-1.8v-4Zm0 5.1h1.8v1.8h-1.8v-1.8Z"/>
+    </svg>
+    <div>
+      <p id="banner-title">—</p>
+      <p id="banner-hint" class="banner-hint">—</p>
+    </div>
+  </section>
+
+  <section class="tiles">
+    <div class="tile">
+      <span id="stat-clients" class="tile-value">—</span>
+      <span class="tile-label">MCP clients</span>
+    </div>
+    <div class="tile">
+      <span id="stat-applets" class="tile-value">—</span>
+      <span class="tile-label">Flow applets</span>
+    </div>
+    <div class="tile">
+      <span id="stat-inflight" class="tile-value">—</span>
+      <span class="tile-label">In flight</span>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2 class="panel-title">
+      Connection
+      <span id="uptime" class="panel-aside"></span>
+    </h2>
+    <dl class="kv">
+      <dt>Bridge socket</dt><dd id="kv-socket">—</dd>
+      <dt>Hub process</dt><dd id="kv-hub">—</dd>
+      <dt>Requests</dt><dd id="kv-requests">—</dd>
+    </dl>
+  </section>
+
+  <section class="panel">
+    <h2 class="panel-title">MCP clients <span id="clients-count" class="badge">0</span></h2>
+    <ul id="clients" class="list"></ul>
+    <p id="clients-empty" class="empty">No MCP server attached. Start an agent or chat that uses the Flow MCP server.</p>
+  </section>
+
+  <section class="panel">
+    <h2 class="panel-title">
+      Flow applets
+      <button id="wake" class="link-btn" type="button">Wake now</button>
+      <span id="applets-count" class="badge">0</span>
+    </h2>
+    <ul id="applets" class="list"></ul>
+    <p id="applets-empty" class="empty">No applet open. Open an applet at flow.google.com and keep the tab open.</p>
+  </section>
+
+  <section class="panel">
+    <h2 class="panel-title">
+      Activity
+      <button id="clear-log" class="link-btn" type="button">Clear</button>
+    </h2>
+    <ul id="activity" class="log"></ul>
+    <p id="activity-empty" class="empty">Nothing yet.</p>
+  </section>
+
+  <footer class="actions">
+    <button id="open-flow" class="btn btn--ghost" type="button">Open Flow</button>
+    <button id="reconnect" class="btn" type="button">Reconnect</button>
+  </footer>
+
+  <p class="credit">
+    Developed by
+    <a href="https://github.com/Devmuhnnad" target="_blank" rel="noopener noreferrer">Devmuhnnad</a>
+  </p>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

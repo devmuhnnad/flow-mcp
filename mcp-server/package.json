@@ -1,0 +1,12 @@
+{
+  "name": "flow-mcp-server",
+  "version": "0.2.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "ws": "^8.18.0",
+    "zod": "^3.25.0"
+  }
+}

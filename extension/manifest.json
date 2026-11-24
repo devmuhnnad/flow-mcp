@@ -1,0 +1,77 @@
+{
+  "manifest_version": 3,
+  "name": "Flow MCP Bridge",
+  "version": "0.4.1",
+  "description": "Bridges Google Flow's applet SDK (generate image/video/text) to local MCP servers, so AI agents can create media in Flow.",
+  "background": {
+    "service_worker": "background.js",
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "flow-mcp-bridge@localhost",
+      "strict_min_version": "128.0"
+    }
+  },
+  "permissions": [
+    "alarms",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://flow.google.com/*",
+    "https://*.scf.usercontent.goog/*"
+  ],
+  "action": {
+    "default_title": "Flow MCP Bridge",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.scf.usercontent.goog/*"
+      ],
+      "js": [
+        "applet-main.js"
+      ],
+      "world": "MAIN",
+      "all_frames": true,
+      "match_origin_as_fallback": true,
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://*.scf.usercontent.goog/*"
+      ],
+      "js": [
+        "applet-bridge.js"
+      ],
+      "all_frames": true,
+      "match_origin_as_fallback": true,
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://flow.google.com/*"
+      ],
+      "js": [
+        "host-notices.js"
+      ],
+      "all_frames": false,
+      "run_at": "document_idle"
+    }
+  ]
+}
