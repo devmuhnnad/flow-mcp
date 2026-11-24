@@ -21,6 +21,41 @@ Why this shape: the applet runs in a cross-origin iframe on
 `*.scf.usercontent.goog`, so flow.google.com page scripts can't reach its
 `FLOW_PORT`. Extension content scripts can be injected directly into that frame.
 
+## Install
+
+### With an AI agent
+
+Paste this to Claude Code, Codex, Cursor or any agent that can run commands:
+
+```
+Install the Flow MCP Bridge from https://github.com/devmuhnnad/flow-mcp
+Clone it somewhere permanent, then read AGENTS.md in the repo and follow it.
+```
+
+`AGENTS.md` tells the agent what to run, which MCP client to ask about, and —
+importantly — that loading the extension is the one step it must hand back to
+you rather than attempt or claim to have done.
+
+### By hand
+
+```
+git clone https://github.com/devmuhnnad/flow-mcp.git
+cd flow-mcp
+node install.mjs --client claude-code
+```
+
+`install.mjs` checks Node, installs dependencies, registers the server with
+your client (backing up any existing config first), and prints the browser
+steps with the absolute path to pick. Re-running it is safe.
+
+| | |
+| --- | --- |
+| `--list` | show which MCP clients were found on this machine |
+| `--client <name>` | `claude-code`, `claude-desktop`, `cursor`, `vscode`, `codex` |
+| `--skip-install` | don't run `npm install` |
+
+Then restart the MCP client — they read their server list only at startup.
+
 ## Running several agents / chats at once
 
 Every MCP client starts its **own** `server.js` process, but only one process
@@ -132,6 +167,8 @@ Safari build must be packaged in a macOS app via Xcode, and whether Safari
 permits an extension to open `ws://127.0.0.1` has not been tested.
 
 ## Setup
+
+What the installer does, if you would rather do it yourself:
 
 1. **Extension**: `chrome://extensions` → Developer mode → Load unpacked → `extension/`.
 2. **MCP server**: `cd mcp-server && npm install`
